@@ -19,3 +19,18 @@ BALL_START_X = 30
 BALL_START_Y = 340
 HOOP_X = 1100
 HOOP_Y = 600
+
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption(APP_NAME)
+
+ballPath = os.path.join("image", "ball.png")
+BALL_IMAGE = pygame.image.load(ballPath)
+BALL = pygame.transform.scale(BALL_IMAGE, (BALL_WIDTH, BALL_HEIGHT))
+
+hoopPath = os.path.join("image", "hoop.png")
+HOOP_IMAGE = pygame.image.load(hoopPath)
+HOOP = pygame.transform.scale(HOOP_IMAGE, (100, 100))
+
+playerPath = os.path.join("image", "player.png")
+PLAYER_IMAGE = pygame.image.load(playerPath)
+PLAYER = pygame.transform.scale(PLAYER_IMAGE, (100, 325))
