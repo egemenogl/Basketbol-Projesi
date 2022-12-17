@@ -34,3 +34,16 @@ HOOP = pygame.transform.scale(HOOP_IMAGE, (100, 100))
 playerPath = os.path.join("image", "player.png")
 PLAYER_IMAGE = pygame.image.load(playerPath)
 PLAYER = pygame.transform.scale(PLAYER_IMAGE, (100, 325))
+courtBackgroundPath = os.path.join("image", "court-background.png")
+COURT_BACKGROUND_IMAGE = pygame.image.load(courtBackgroundPath)
+
+
+
+
+COURT_BACKGROUND = pygame.transform.scale(
+    COURT_BACKGROUND_IMAGE, (WIDTH, HEIGHT/2))
+
+pygame.display.set_icon(BALL_IMAGE)
+
+pygame.font.init()
+
