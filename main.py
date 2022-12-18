@@ -86,3 +86,27 @@ def isMouseOverUI():
     testMouseY = pygame.mouse.get_pos()[1] < 80
     
     return testMouseX and testMouseY
+
+# Pota
+
+
+
+
+
+class Hoop:
+    def getHoopInColliderDimensions(self):
+        return pygame.Rect(
+            self.obj.centerx+5, self.obj.y-15, self.width / 6, self.height / 8)
+    
+    
+
+    def getHoopMetalColliderDimensions(self):
+        return pygame.Rect(
+            self.obj.x-5, self.obj.y+15, self.width / 12, self.height / 10)
+    
+    
+
+    def __init__(self, Debug=False):
+        _tp = _translatePos((HOOP_X, HOOP_Y))
+
+
