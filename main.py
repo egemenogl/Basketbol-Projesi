@@ -108,5 +108,7 @@ class Hoop:
 
     def __init__(self, Debug=False):
         _tp = _translatePos((HOOP_X, HOOP_Y))
+        self.width = HOOP.get_width()
+        self.height = HOOP.get_height()
 
 
