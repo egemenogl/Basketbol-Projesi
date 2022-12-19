@@ -94,21 +94,60 @@ def isMouseOverUI():
 
 
 class Hoop:
+    
     def getHoopInColliderDimensions(self):
+        
         return pygame.Rect(
+            
             self.obj.centerx+5, self.obj.y-15, self.width / 6, self.height / 8)
     
     
 
     def getHoopMetalColliderDimensions(self):
-        return pygame.Rect(
+        
+        return pygame.Rect
             self.obj.x-5, self.obj.y+15, self.width / 12, self.height / 10)
     
     
 
     def __init__(self, Debug=False):
+        
         _tp = _translatePos((HOOP_X, HOOP_Y))
+        
         self.width = HOOP.get_width()
+        
         self.height = HOOP.get_height()
 
 
+        self.obj = pygame.Rect(_tp[0], _tp[1], self.width, self.height)
+        
+        self.hoopInCollider = self.getHoopInColliderDimensions()
+        
+        self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
+        self.Debug = Debug
+
+    def collisionBoxes(self):
+        return [self.hoopInCollider, self.hoopMetalCollider]
+
+    def hoopInBox(self):
+        return self.hoopInCollider
+
+    def hoopMetalBox(self):
+        return self.hoopMetalCollider
+
+    def pos(self):
+        return (self.obj.x, self.obj.y)
+
+    def moveTo(self, x=None, y=None):
+        if x:
+            self.obj.x = x
+            
+            self.hoopInCollider = self.getHoopInColliderDimensions()
+            
+            self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
+        if y:
+            self.obj.y = y
+            
+            self.hoopInCollider = self.getHoopInColliderDimensions()
+            
+            self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
