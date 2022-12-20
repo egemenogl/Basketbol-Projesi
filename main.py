@@ -168,5 +168,9 @@ class Hoop:
             if self.Debug:
                 for c in self.collisionBoxes():
                     pygame.draw.rect(SCREEN, (255, 255, 255), c)
+                    
+                    
+                    
+                    
 
 
