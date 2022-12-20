@@ -183,5 +183,24 @@ class Hoop:
         
        
 
+    def move(self, hoop: Hoop):
+        
+        self.obj.x += self.vx * PLAY_SPEED / FPS
+        
+        self.obj.y += self.vy * PLAY_SPEED / FPS
+        
+        self.vy += 9.8 * PLAY_SPEED / FPS
+
+        self.checkCollision(hoop)
+
+        if self.obj.x < 0 or self.obj.x > WIDTH - BALL_WIDTH:
+            
+            self.vx *= -.8
+            
+            self.obj.x = max(0, min(self.obj.x, WIDTH - BALL_WIDTH))
+
+        if self.obj.y > HEIGHT:
+            
+            self.reset()
 
 
