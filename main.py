@@ -151,3 +151,22 @@ class Hoop:
             self.hoopInCollider = self.getHoopInColliderDimensions()
             
             self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
+            
+    def reset(self):
+            _tp = _translatePos((HOOP_X, HOOP_Y))
+            
+            self.obj = pygame.Rect(_tp[0], _tp[1], self.width, self.height)
+            
+            self.hoopInCollider = self.getHoopInColliderDimensions()
+            
+            self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
+
+    def draw(self):
+            SCREEN.blit(HOOP, self.pos())
+            
+            # Hata ayıklama için beyaz kare çiz
+            if self.Debug:
+                for c in self.collisionBoxes():
+                    pygame.draw.rect(SCREEN, (255, 255, 255), c)
+
+
