@@ -171,6 +171,17 @@ class Hoop:
                     
                     
                     
-                    
+     
+     # Top:
+     class Ball:
+         def __init__(self):
+              _tp = _translatePos((BALL_START_X, BALL_START_Y))
+              self.vx = 0
+              self.vy = 0
+              self.isMoving = False
+              self.obj = pygame.Rect(_tp[0], _tp[1], BALL_WIDTH, BALL_HEIGHT)
+        
+       
+
 
 
