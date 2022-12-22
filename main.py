@@ -203,4 +203,28 @@ class Hoop:
             
             self.reset()
 
+    def pos(self):
+        return (self.obj.x, self.obj.y)
+
+    def reset(self):
+        _tp = _translatePos((BALL_START_X, BALL_START_Y))
+        self.obj.x = _tp[0]
+        self.obj.y = _tp[1]
+        self.vx = 0
+        self.vy = 0
+        self.isMoving = False
+
+    def startMoving(self, mouseX, mouseY):
+        self.isMoving = True
+        diffX = mouseX - self.obj.x
+        diffY = mouseY - self.obj.y
+        self.vx = diffX / MOUSE_DIST_D
+        self. vy = diffY / MOUSE_DIST_D
+
+    def draw(self):
+        
+        SCREEN.blit(BALL, self.pos())
+
+
+
 
