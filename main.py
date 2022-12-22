@@ -234,7 +234,22 @@ return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - 
             return
         
         
-    
+            speedNow = (self.vx**2 + self.vy**2)**0.5
+        bounceAngle = math.atan2(self.obj.centery - y, self.obj.centerx - x)
+        
+        self.vx = -speedNow * math.cos(bounceAngle) * 0.9
+        
+        self.vy = -speedNow * math.sin(bounceAngle) * 0.9
+
+    def checkCollision(self, hoop: Hoop):
+        
+        hib = hoop.hoopInBox()
+        hmb = hoop.hoopMetalBox()
+        
+        if self.obj.colliderect(hib):
+            self.vx = 0
+        elif self.obj.colliderect(hmb):
+            self.bounceRelative( hmb.centery, hoop)
     
     
 
