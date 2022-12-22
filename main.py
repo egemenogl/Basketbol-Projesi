@@ -225,6 +225,14 @@ class Hoop:
         
         SCREEN.blit(BALL, self.pos())
         
+        def checkBallMovingTowardsHoop(self, hoop: Hoop):
+return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - hoop.obj.centery) > 0        
+
+    def bounceRelative(self, x, y, hoop: Hoop):
+        # Check if the ball is moving towards the hoop
+        if not self.checkBallMovingTowardsHoop(hoop):
+            return
+        
         
     
     
