@@ -224,9 +224,8 @@ class Hoop:
     def draw(self):
         
         SCREEN.blit(BALL, self.pos())
-       
-    
-    
+        
+        
     
     
     
