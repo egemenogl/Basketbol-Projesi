@@ -250,6 +250,7 @@ return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - 
             self.vx = 0
         elif self.obj.colliderect(hmb):
             self.bounceRelative( hmb.centery, hoop)
+            
     
     
 
