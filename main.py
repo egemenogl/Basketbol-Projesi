@@ -250,9 +250,25 @@ return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - 
             self.vx = 0
         elif self.obj.colliderect(hmb):
             self.bounceRelative( hmb.centery, hoop)
-            
-    
-    
 
 
+# Kaydıraçlar:
 
+
+class Slider:
+
+    def __init__(self, name, startingValue, xmin, xmax, ymin, ymax):
+        self.value = startingValue
+        self.name = name
+        self.xbound = (xmin, xmax)
+        self.ybound = (ymin, ymax)
+        self.width = xmax - xmin
+        self.height = ymax - ymin
+
+    def update(self):
+        mouseX, mouseY = pygame.mouse.get_pos()
+        
+        if self.xbound[0] < mouseX < self.xbound[1] and self.ybound[0] + self.height / 2 - 5 < mouseY < self.ybound[1]:
+            self.value = mouseX
+
+    def draw(self, suffix="", getValFunc=None):
