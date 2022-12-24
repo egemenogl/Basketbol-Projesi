@@ -284,3 +284,30 @@ class Slider:
                            (self.xbound[0], self.ybound[0]  ), self.height / 2)
         pygame.draw.circle(SCREEN, (125, 125, 125),
                            (self.x, self.ybound[0] + self.height / 2), self.height / 2)
+        
+        
+        
+        
+        # Yuvarlak
+        pygame.draw.circle(SCREEN, (125, 0, 0), (
+            self.xbound[0] + self.value - 5, self.ybound[0] + self.height / 2), 10)
+        
+        
+        
+       
+        # Yazı
+        df = pygame.font.get_default_font()
+        font = pygame.font.SysFont(df, 20)
+        if getValFunc != None:
+            text = font.render(
+                f"{self.name}: {getValFunc(self.value)}{suffix}", True, (0, 0, 0))
+        else:
+            text = font.render(
+                f"{self.name}: {self.value}{suffix}", True, (0, 0, 0))
+        SCREEN.blit(text, (self.xbound[1] + 10,
+                    (self.ybound[1]+self.ybound[0])/2 - text.get_height() / 2))
+
+    def getValue(self, func=None):
+        if func != None:
+            return func(self.value)
+        return self.value
