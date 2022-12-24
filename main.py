@@ -275,13 +275,12 @@ class Slider:
         
       
     # Çerçeve
-        
-        
-        pygame.draw.rect(SCREEN, (125, 125, 125),
-                         (self.xbound[0], self.ybound[0], self heıhg, self.height))
-        
-        pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.xbound[0], self.ybound[0] ), self.height / 2)
+    
+    
+        pygame.draw.rect(SCREEN, (125, 125, 125)
+                         (self.xbound[0], self.ybound[0], self.width, self.height))
         
         pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.xbound[1], self.ybound[0] + self.height / 2), self.height / 2)
+                           (self.xbound[0], self.ybound[0]  ), self.height / 2)
+        pygame.draw.circle(SCREEN, (125, 125, 125),
+                           (self.x, self.ybound[0] + self.height / 2), self.height / 2)
