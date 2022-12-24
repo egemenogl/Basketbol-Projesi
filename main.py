@@ -272,3 +272,16 @@ class Slider:
             self.value = mouseX
 
     def draw(self, suffix="", getValFunc=None):
+        
+      
+    # Çerçeve
+        
+        
+        pygame.draw.rect(SCREEN, (125, 125, 125),
+                         (self.xbound[0], self.ybound[0], self heıhg, self.height))
+        
+        pygame.draw.circle(SCREEN, (125, 125, 125),
+                           (self.xbound[0], self.ybound[0] ), self.height / 2)
+        
+        pygame.draw.circle(SCREEN, (125, 125, 125),
+                           (self.xbound[1], self.ybound[0] + self.height / 2), self.height / 2)
