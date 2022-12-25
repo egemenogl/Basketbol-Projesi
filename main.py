@@ -311,3 +311,17 @@ class Slider:
         if func != None:
             return func(self.value)
         return self.value
+    
+    
+    
+    
+    
+# Oyun:
+
+
+
+class Game:
+    def __init__(self, Debug=False):
+        self.isRunning = True
+        self.clock = pygame.time.Clock()
+        self.deltaTime = 0
