@@ -350,3 +350,18 @@ def handleEvents(self):
                     self.LastTrajectory = mouseDownShootBall(self.ball)
                     self.LastClickPos = pygame.mouse.get_pos()
                     
+                    
+                    
+                    
+ def playSpeedConversion(self, x):
+        return (x-15)/10   
+    
+    
+    
+def hoopHeightConversion(self, x):
+        minHoop = self.hoopSlider.xbound[0]
+        maxHoop = self.hoopSlider.xbound[1]
+        return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
+                    
+                    
+                    
