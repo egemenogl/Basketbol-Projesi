@@ -325,3 +325,16 @@ class Game:
         self.isRunning = True
         self.clock = pygame.time.Clock()
         self.deltaTime = 0
+        self.ball = Ball()
+        
+        self.hoop = Hoop(Debug=Debug)
+        
+        self.hoopSlider = Slider("Pota", 150, 15, 215, 14, 26)
+        self.speedSlider = Slider("Hız", 115, 15, 215, 50, 62)
+        
+        self.LastTrajectory = None
+        self.LastClickPos = None
+
+        
+    def tickClock(self):
+        return self.clock.tick(FPS)
