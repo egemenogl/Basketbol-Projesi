@@ -364,4 +364,12 @@ def hoopHeightConversion(self, x):
         return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
                     
                     
-                    
+    def hoopFormat(self, x):
+        
+        return round(convertPixelToMeter(HEIGHT - self.hoopHeightConversion(x)), 2)
+
+    
+    def speedFormat(self, x):
+        
+        return self.playSpeedConversion(x)
+            
