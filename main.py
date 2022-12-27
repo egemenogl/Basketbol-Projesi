@@ -373,3 +373,18 @@ def hoopHeightConversion(self, x):
         
         return self.playSpeedConversion(x)
             
+    def update(self):
+        global PLAY_SPEED
+        if pygame.mouse.get_pressed()[0]:
+            if isMouseOverUI():
+                self.speedSlider.update()
+                PLAY_SPEED = self.speedSlider.getValue(
+                    self.playSpeedConversion)
+                self.hoopSlider.update()
+                self.hoop.moveTo(y=self.hoopSlider.getValue(
+                    self.hoopHeightConversion))
+
+        if pygame.key.get_pressed()[pygame.K_SPACE]:
+            self.ball.reset()
+        if self.ball.isMoving:
+            self.ball.move(self.hoop)
