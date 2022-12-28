@@ -401,4 +401,13 @@ def hoopHeightConversion(self, x):
             pygame.draw.line(SCREEN, (255, 0, 0), l2s, l2e)
             
             
+           def draw(self):
+        # Image
+        SCREEN.fill((255, 255, 255))
+        SCREEN.blit(COURT_BACKGROUND_IMAGE, (0, 0))
+        self.drawLastClickX()
+        self.ball.draw()
+        self.hoop.draw()
+        SCREEN.blit(PLAYER, _translatePos((0, 325)))
+            
             
