@@ -388,3 +388,17 @@ def hoopHeightConversion(self, x):
             self.ball.reset()
         if self.ball.isMoving:
             self.ball.move(self.hoop)
+            
+            
+        
+  def drawLastClickX(self):
+        if self.LastClickPos != None:
+            l1s = (self.LastClickPos[0] - 10, self.LastClickPos[1] - 10)
+            l1e = (self.LastClickPos[0] + 10, self.LastClickPos[1] + 10)
+            l2s = (self.LastClickPos[0] - 10, self.LastClickPos[1] + 10)
+            l2e = (self.LastClickPos[0] + 10, self.LastClickPos[1] - 10)
+            pygame.draw.line(SCREEN, (255, 0, 0), l1s, l1e)
+            pygame.draw.line(SCREEN, (255, 0, 0), l2s, l2e)
+            
+            
+            
