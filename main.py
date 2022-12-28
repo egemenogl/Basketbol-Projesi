@@ -410,4 +410,8 @@ def hoopHeightConversion(self, x):
         self.hoop.draw()
         SCREEN.blit(PLAYER, _translatePos((0, 325)))
             
-            
+        # Çizgiler
+        draw_speed_vector(self.ball)
+        if self.ball.isMoving:
+            draw_trajectory(self.LastTrajectory)
+
