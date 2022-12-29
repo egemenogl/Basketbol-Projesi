@@ -420,3 +420,18 @@ def hoopHeightConversion(self, x):
         self.speedSlider.draw(getValFunc=self.speedFormat)
 
         pygame.display.update()
+
+    def run(self):
+        
+
+        while self.isRunning:
+            self.tickClock()
+            self.handleEvents()
+            self.update()
+            self.draw()
+
+
+def getHoopSliderValue(hoop: Hoop):
+    
+    return round(convertPixelToMeter(HEIGHT - hoop.obj.y), 2)
+
