@@ -415,3 +415,8 @@ def hoopHeightConversion(self, x):
         if self.ball.isMoving:
             draw_trajectory(self.LastTrajectory)
 
+        # kaydıraçlar
+        self.hoopSlider.draw("m", self.hoopFormat)
+        self.speedSlider.draw(getValFunc=self.speedFormat)
+
+        pygame.display.update()
