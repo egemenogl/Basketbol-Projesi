@@ -402,7 +402,7 @@ def hoopHeightConversion(self, x):
             
             
            def draw(self):
-        # Image
+        # resim
         SCREEN.fill((255, 255, 255))
         SCREEN.blit(COURT_BACKGROUND_IMAGE, (0, 0))
         self.drawLastClickX()
