@@ -435,3 +435,13 @@ def getHoopSliderValue(hoop: Hoop):
     
     return round(convertPixelToMeter(HEIGHT - hoop.obj.y), 2)
 
+
+
+def draw_speed_vector(ball: Ball):
+    mouseX, mouseY = pygame.mouse.get_pos()
+
+    
+    
+    if mouseX == ball.obj.centerx:
+        angle = pi/2
+
