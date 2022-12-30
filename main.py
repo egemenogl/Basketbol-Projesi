@@ -445,3 +445,6 @@ def draw_speed_vector(ball: Ball):
     if mouseX == ball.obj.centerx:
         angle = pi/2
 
+    else:
+        angle = math.degrees(atan((ball.obj.centery - mouseY) /
+                                (mouseX - ball.obj.centerx)))
