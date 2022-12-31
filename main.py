@@ -264,37 +264,29 @@ class Slider:
         self.ybound = (ymin, ymax)
         self.width = xmax - xmin
         self.height = ymax - ymin
-
-    def update(self):
-        mouseX, mouseY = pygame.mouse.get_pos()
         
+        
+        
+        def update(self):
+        mouseX, mouseY = pygame.mouse.get_pos()
         if self.xbound[0] < mouseX < self.xbound[1] and self.ybound[0] + self.height / 2 - 5 < mouseY < self.ybound[1]:
             self.value = mouseX
 
     def draw(self, suffix="", getValFunc=None):
-        
-      
-    # Çerçeve
-    
-    
-        pygame.draw.rect(SCREEN, (125, 125, 125)
+        # Çerçeve
+        pygame.draw.rect(SCREEN, (125, 125, 125),
                          (self.xbound[0], self.ybound[0], self.width, self.height))
-        
         pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.xbound[0], self.ybound[0]  ), self.height / 2)
+                           (self.xbound[0], self.ybound[0] + self.height / 2), self.height / 2)
         pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.x, self.ybound[0] + self.height / 2), self.height / 2)
-        
-        
-        
-        
+                           (self.xbound[1], self.ybound[0] + self.height / 2), self.height / 2)
+
         # Yuvarlak
         pygame.draw.circle(SCREEN, (125, 0, 0), (
             self.xbound[0] + self.value - 5, self.ybound[0] + self.height / 2), 10)
+
+
         
-        
-        
-       
         # Yazı
         df = pygame.font.get_default_font()
         font = pygame.font.SysFont(df, 20)
