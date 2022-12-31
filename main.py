@@ -453,3 +453,24 @@ def draw_speed_vector(ball: Ball):
        
     if ball.isMoving != True:
         diffX = mouseX - ball.obj.x
+         diffY = mouseY - ball.obj.y
+        _vx = diffX / MOUSE_DIST_D
+        _vy = diffY / MOUSE_DIST_D
+        pygame.draw.line(SCREEN, (0, 0, 0), ball.obj.center,
+                         (mouseX, mouseY), 2)
+        draw_line_text((mouseX + 10, mouseY), "v: " +
+                       str(round(convertPixelToMeter(math.sqrt(_vx**2 + _vy**2)), 3)) + " m/s")
+        draw_dashed_line_x(SCREEN, (0, 0, 0), ball.obj.center,
+                           (mouseX, ball.obj.centery))
+        draw_line_text(
+            (ball.obj.centerx + 50, ball.obj.centery - 20), "\u03B8: " + str(round(angle, 1)) + "\u00B0")
+
+
+def mouseDownShootBall(ball: Ball):
+    mouseX, mouseY = pygame.mouse.get_pos()
+    startPos = [ball.obj.centerx, ball.obj.centery]
+    ball.startMoving(mouseX, mouseY)
+    lastTrajectory = [startPos, *create_trajectory(
+        (ball.obj.centerx, ball.obj.centery), ball.vx, ball.vy)]
+
+    return lastTrajectory
