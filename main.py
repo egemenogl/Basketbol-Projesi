@@ -445,7 +445,7 @@ def draw_speed_vector(ball: Ball):
        
     if ball.isMoving != True:
         diffX = mouseX - ball.obj.x
-         diffY = mouseY - ball.obj.y
+        diffY = mouseY - ball.obj.y
         _vx = diffX / MOUSE_DIST_D
         _vy = diffY / MOUSE_DIST_D
         pygame.draw.line(SCREEN, (0, 0, 0), ball.obj.center,
@@ -471,3 +471,15 @@ def mouseDownShootBall(ball: Ball):
 
 def create_trajectory(posNow, v_x, v_y):
     trajectory = []
+
+
+    while WIDTH > posNow[0] > 0 and posNow[1] < HEIGHT:
+        xInc = v_x * (1/FPS) * PLAY_SPEED
+        yInc = v_y * (1/FPS) * PLAY_SPEED
+        xNow = posNow[0] + xInc
+        yNow = posNow[1] + yInc
+        posNow = (xNow, yNow)
+        trajectory.append(posNow)
+        v_y += 9.8 * PLAY_SPEED / FPS
+        
+    return trajectory
