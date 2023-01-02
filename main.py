@@ -466,3 +466,8 @@ def mouseDownShootBall(ball: Ball):
         (ball.obj.centerx, ball.obj.centery), ball.vx, ball.vy)]
 
     return lastTrajectory
+   
+
+
+def create_trajectory(posNow, v_x, v_y):
+    trajectory = []
