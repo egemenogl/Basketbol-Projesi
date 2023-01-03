@@ -483,3 +483,9 @@ def create_trajectory(posNow, v_x, v_y):
         v_y += 9.8 * PLAY_SPEED / FPS
         
     return trajectory
+
+
+ def draw_dashed_line_y(screen, color, start_pos, end_pos, width=1, dash_length=10):
+    for i in range(int(start_pos[1]), int(end_pos[1]), dash_length + 5):
+        pygame.draw.line(
+            screen, color, (int(start_pos[0]), i), (int(end_pos[0]), i + dash_length), width)
