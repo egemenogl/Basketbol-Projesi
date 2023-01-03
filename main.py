@@ -413,7 +413,7 @@ def hoopHeightConversion(self, x):
 
         pygame.display.update()
 
-    def run(self):
+def run(self):
         
 
         while self.isRunning:
@@ -489,3 +489,8 @@ def create_trajectory(posNow, v_x, v_y):
     for i in range(int(start_pos[1]), int(end_pos[1]), dash_length + 5):
         pygame.draw.line(
             screen, color, (int(start_pos[0]), i), (int(end_pos[0]), i + dash_length), width)
+    midX = int((start_pos[0] + end_pos[0]) / 2)
+    midY = int((start_pos[1] + end_pos[1]) / 2)
+    mid_point = (midX, midY)
+
+    return mid_point
