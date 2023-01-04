@@ -501,3 +501,9 @@ def draw_dashed_line_x(screen, color, start_pos, end_pos, width=1, dash_length=1
     for i in range(int(start_pos[0]), int(end_pos[0]), dash_length + 5):
         pygame.draw.line(
             screen, color, (i, int(start_pos[1])), (i + dash_length, int(end_pos[1])), width)
+    midX = int((start_pos[0] + end_pos[0]) / 2)
+    midY = int((start_pos[1] + end_pos[1]) / 2)
+    mid_point = (midX, midY)
+
+    return mid_point
+
