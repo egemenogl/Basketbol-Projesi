@@ -383,29 +383,29 @@ def hoopHeightConversion(self, x):
             
             
         
-  def drawLastClickX(self):
-        if self.LastClickPos != None:
-            l1s = (self.LastClickPos[0] - 10, self.LastClickPos[1] - 10)
-            l1e = (self.LastClickPos[0] + 10, self.LastClickPos[1] + 10)
-            l2s = (self.LastClickPos[0] - 10, self.LastClickPos[1] + 10)
-            l2e = (self.LastClickPos[0] + 10, self.LastClickPos[1] - 10)
-            pygame.draw.line(SCREEN, (255, 0, 0), l1s, l1e)
-            pygame.draw.line(SCREEN, (255, 0, 0), l2s, l2e)
+def drawLastClickX(self):
+    if self.LastClickPos != None:
+        l1s = (self.LastClickPos[0] - 10, self.LastClickPos[1] - 10)
+        l1e = (self.LastClickPos[0] + 10, self.LastClickPos[1] + 10)
+        l2s = (self.LastClickPos[0] - 10, self.LastClickPos[1] + 10)
+        l2e = (self.LastClickPos[0] + 10, self.LastClickPos[1] - 10)
+        pygame.draw.line(SCREEN, (255, 0, 0), l1s, l1e)
+        pygame.draw.line(SCREEN, (255, 0, 0), l2s, l2e)
             
             
-           def draw(self):
-        # resim
-        SCREEN.fill((255, 255, 255))
-        SCREEN.blit(COURT_BACKGROUND_IMAGE, (0, 0))
-        self.drawLastClickX()
-        self.ball.draw()
-        self.hoop.draw()
-        SCREEN.blit(PLAYER, _translatePos((0, 325)))
+def draw(self):
+        # Image
+    SCREEN.fill((255, 255, 255))
+    SCREEN.blit(COURT_BACKGROUND_IMAGE, (0, 0))
+    self.drawLastClickX()
+    self.ball.draw()
+    self.hoop.draw()
+    SCREEN.blit(PLAYER, _translatePos((0, 325)))
             
         # Çizgiler
-        draw_speed_vector(self.ball)
-        if self.ball.isMoving:
-            draw_trajectory(self.LastTrajectory)
+    draw_speed_vector(self.ball)
+    if self.ball.isMoving:
+        draw_trajectory(self.LastTrajectory)
 
         # kaydıraçlar
         self.hoopSlider.draw("m", self.hoopFormat)
@@ -493,7 +493,7 @@ def create_trajectory(posNow, v_x, v_y):
         midY = int((start_pos[1] + end_pos[1]) / 2)
         mid_point = (midX, midY)
 
-    return mid_point
+        return mid_point
 
 
 def draw_dashed_line_x(screen, color, start_pos, end_pos, width=1, dash_length=10):
