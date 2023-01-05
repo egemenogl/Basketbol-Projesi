@@ -507,3 +507,16 @@ def draw_dashed_line_x(screen, color, start_pos, end_pos, width=1, dash_length=1
 
     return mid_point
 
+def draw_line_text(m, s):
+    df = pygame.font.get_default_font()
+    font = pygame.font.SysFont(df, 20)
+    text = font.render(s, True, (0, 0, 0))
+    SCREEN.blit(text, m)
+
+
+def draw_trajectory(trajectory: None or list[tuple[int, int]]):
+    if trajectory is None:
+        return
+
+
+
