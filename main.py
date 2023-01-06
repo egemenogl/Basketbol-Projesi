@@ -517,6 +517,9 @@ def draw_line_text(m, s):
 def draw_trajectory(trajectory: None or list[tuple[int, int]]):
     if trajectory is None:
         return
-
+    max_y_pos = max(trajectory, key=x)
+    pygame.draw.lines(SCREEN, color=(0, 0, 0), closed=False,
+                    points=trajectory, width=2)
+    m = draw_dashed_line_y(SCREEN, color=(0, 0, 0),
 
 
