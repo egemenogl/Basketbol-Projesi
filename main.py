@@ -526,3 +526,8 @@ def draw_trajectory(trajectory: None or list[tuple[int, int]]):
       start_pos=max_y_pos, end_pos=(max_y_pos[0], HEIGHT))
 
 
+    draw_line_text(m,
+                   str(round(convertPixelToMeter(_translatePos(max_y_pos)[0]), 3))+"m" +
+                   ", " +
+                   str(round(convertPixelToMeter(_translatePos(max_y_pos)[1]), 3))+"m")
+
