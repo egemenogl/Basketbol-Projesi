@@ -520,9 +520,9 @@ def draw_trajectory(trajectory: None or list[tuple[int, int]]):
     max_y_pos = max(trajectory, key=x)
     pygame.draw.lines(SCREEN, color=(0, 0, 0), closed=False,
                     points=trajectory, width=2)
-    m = draw_dashed_line_y(SCREEN, color=(0, 0, 0),
+    m = draw_dashed_line_y(SCREEN, color=(0, 0, 0)),
                            
-     m = draw_dashed_line_y(SCREEN, color=(0, 0, 0),
+    m = draw_dashed_line_y(SCREEN, color=(0, 0, 0),
       start_pos=max_y_pos, end_pos=(max_y_pos[0], HEIGHT))
 
 
