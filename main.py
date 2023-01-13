@@ -356,29 +356,29 @@ def hoopHeightConversion(self, x):
         return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
                     
                     
-    def hoopFormat(self, x):
+def hoopFormat(self, x):
         
-        return round(convertPixelToMeter(HEIGHT - self.hoopHeightConversion(x)), 2)
+    return round(convertPixelToMeter(HEIGHT - self.hoopHeightConversion(x)), 2)
 
     
-    def speedFormat(self, x):
+def speedFormat(self, x):
         
-        return self.playSpeedConversion(x)
+    return self.playSpeedConversion(x)
             
-    def update(self):
-        global PLAY_SPEED
-        if pygame.mouse.get_pressed()[0]:
-            if isMouseOverUI():
-                self.speedSlider.update()
-                PLAY_SPEED = self.speedSlider.getValue(
-                    self.playSpeedConversion)
-                self.hoopSlider.update()
-                self.hoop.moveTo(y=self.hoopSlider.getValue(
-                    self.hoopHeightConversion))
+def update(self):
+    global PLAY_SPEED
+    if pygame.mouse.get_pressed()[0]:
+        if isMouseOverUI():
+            self.speedSlider.update()
+            PLAY_SPEED = self.speedSlider.getValue(
+                self.playSpeedConversion)
+            self.hoopSlider.update()
+            self.hoop.moveTo(y=self.hoopSlider.getValue(
+                self.hoopHeightConversion))
 
-        if pygame.key.get_pressed()[pygame.K_SPACE]:
+    if pygame.key.get_pressed()[pygame.K_SPACE]:
             self.ball.reset()
-        if self.ball.isMoving:
+    if self.ball.isMoving:
             self.ball.move(self.hoop)
             
             
