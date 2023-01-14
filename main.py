@@ -105,7 +105,7 @@ class Hoop:
 
     def getHoopMetalColliderDimensions(self):
         
-        return pygame.Rect
+        return pygame.Rect(
             self.obj.x-5, self.obj.y+15, self.width / 12, self.height / 10)
     
     
@@ -171,17 +171,17 @@ class Hoop:
                     
                     
                     
-     
-     # Top:
-     class Ball:
-         def __init__(self):
-              _tp = _translatePos((BALL_START_X, BALL_START_Y))
-              self.vx = 0
-              self.vy = 0
-              self.isMoving = False
-              self.obj = pygame.Rect(_tp[0], _tp[1], BALL_WIDTH, BALL_HEIGHT)
+    
+    # Top:
+    class Ball:
+        def __init__(self):
+            _tp = _translatePos((BALL_START_X, BALL_START_Y))
+            self.vx = 0
+            self.vy = 0
+            self.isMoving = False
+            self.obj = pygame.Rect(_tp[0], _tp[1], BALL_WIDTH, BALL_HEIGHT)
         
-       
+
 
     def move(self, hoop: Hoop):
         
@@ -222,11 +222,10 @@ class Hoop:
         self. vy = diffY / MOUSE_DIST_D
 
     def draw(self):
-        
         SCREEN.blit(BALL, self.pos())
         
-        def checkBallMovingTowardsHoop(self, hoop: Hoop):
-return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - hoop.obj.centery) > 0        
+    def checkBallMovingTowardsHoop(self, hoop: Hoop):
+        return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - hoop.obj.centery) > 0        
 
     def bounceRelative(self, x, y, hoop: Hoop):
         # Check if the ball is moving towards the hoop
@@ -267,7 +266,7 @@ class Slider:
         
         
         
-        def update(self):
+    def update(self):
         mouseX, mouseY = pygame.mouse.get_pos()
         if self.xbound[0] < mouseX < self.xbound[1] and self.ybound[0] + self.height / 2 - 5 < mouseY < self.ybound[1]:
             self.value = mouseX
@@ -275,11 +274,11 @@ class Slider:
     def draw(self, suffix="", getValFunc=None):
         # Çerçeve
         pygame.draw.rect(SCREEN, (125, 125, 125),
-                         (self.xbound[0], self.ybound[0], self.width, self.height))
+                        (self.xbound[0], self.ybound[0], self.width, self.height))
         pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.xbound[0], self.ybound[0] + self.height / 2), self.height / 2)
+                        (self.xbound[0], self.ybound[0] + self.height / 2), self.height / 2)
         pygame.draw.circle(SCREEN, (125, 125, 125),
-                           (self.xbound[1], self.ybound[0] + self.height / 2), self.height / 2)
+                        (self.xbound[1], self.ybound[0] + self.height / 2), self.height / 2)
 
         # Yuvarlak
         pygame.draw.circle(SCREEN, (125, 0, 0), (
@@ -345,7 +344,7 @@ def handleEvents(self):
                     
                     
                     
- def playSpeedConversion(self, x):
+def playSpeedConversion(self, x):
         return (x-15)/10   
     
     
