@@ -21,21 +21,26 @@ HOOP_X = 1100
 HOOP_Y = 600
 
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+
 pygame.display.set_caption(APP_NAME)
 
 ballPath = os.path.join("image", "ball.png")
+
 BALL_IMAGE = pygame.image.load(ballPath)
 BALL = pygame.transform.scale(BALL_IMAGE, (BALL_WIDTH, BALL_HEIGHT))
 
 hoopPath = os.path.join("image", "hoop.png")
+
 HOOP_IMAGE = pygame.image.load(hoopPath)
 HOOP = pygame.transform.scale(HOOP_IMAGE, (100, 100))
 
 playerPath = os.path.join("image", "player.png")
+
 PLAYER_IMAGE = pygame.image.load(playerPath)
 PLAYER = pygame.transform.scale(PLAYER_IMAGE, (100, 325))
 
 courtBackgroundPath = os.path.join("image", "court-background.png")
+
 COURT_BACKGROUND_IMAGE = pygame.image.load(courtBackgroundPath)
 COURT_BACKGROUND = pygame.transform.scale(
     COURT_BACKGROUND_IMAGE, (WIDTH, HEIGHT/2))
@@ -48,10 +53,12 @@ pygame.font.init()
 
 
 def convertPixelToMeter(n):
+    
     return n / WIDTH * WIDTH_IN_METER
 
 
 def _translatePos(t):
+    
     return (t[0], HEIGHT - t[1])
 
 
@@ -60,6 +67,7 @@ def distance(p1, p2):
 
 
 def isMouseOverUI():
+    
     testMouseX = pygame.mouse.get_pos()[0] < 230
     testMouseY = pygame.mouse.get_pos()[1] < 80
     return testMouseX and testMouseY
@@ -77,6 +85,7 @@ class Hoop:
             self.obj.x-5, self.obj.y+15, self.width / 12, self.height / 10)
 
     def __init__(self, Debug=False):
+        
         _tp = _translatePos((HOOP_X, HOOP_Y))
         self.width = HOOP.get_width()
         self.height = HOOP.get_height()
@@ -99,21 +108,25 @@ class Hoop:
 
     def moveTo(self, x=None, y=None):
         if x:
+            
             self.obj.x = x
             self.hoopInCollider = self.getHoopInColliderDimensions()
             self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
         if y:
+            
             self.obj.y = y
             self.hoopInCollider = self.getHoopInColliderDimensions()
             self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
 
     def reset(self):
+        
         _tp = _translatePos((HOOP_X, HOOP_Y))
         self.obj = pygame.Rect(_tp[0], _tp[1], self.width, self.height)
         self.hoopInCollider = self.getHoopInColliderDimensions()
         self.hoopMetalCollider = self.getHoopMetalColliderDimensions()
 
     def draw(self):
+        
         SCREEN.blit(HOOP, self.pos())
         # Hata ayıklama için beyaz kare çiz
         if self.Debug:
@@ -125,7 +138,9 @@ class Hoop:
 
 
 class Ball:
+    
     def __init__(self):
+        
         _tp = _translatePos((BALL_START_X, BALL_START_Y))
         self.vx = 0
         self.vy = 0
@@ -133,6 +148,7 @@ class Ball:
         self.obj = pygame.Rect(_tp[0], _tp[1], BALL_WIDTH, BALL_HEIGHT)
 
     def move(self, hoop: Hoop):
+        
         self.obj.x += self.vx * PLAY_SPEED / FPS
         self.obj.y += self.vy * PLAY_SPEED / FPS
         self.vy += 9.8 * PLAY_SPEED / FPS
@@ -144,12 +160,15 @@ class Ball:
             self.obj.x = max(0, min(self.obj.x, WIDTH - BALL_WIDTH))
 
         if self.obj.y > HEIGHT:
+            
             self.reset()
 
     def pos(self):
+        
         return (self.obj.x, self.obj.y)
 
     def reset(self):
+        
         _tp = _translatePos((BALL_START_X, BALL_START_Y))
         self.obj.x = _tp[0]
         self.obj.y = _tp[1]
@@ -158,6 +177,7 @@ class Ball:
         self.isMoving = False
 
     def startMoving(self, mouseX, mouseY):
+        
         self.isMoving = True
         diffX = mouseX - self.obj.x
         diffY = mouseY - self.obj.y
@@ -165,14 +185,18 @@ class Ball:
         self. vy = diffY / MOUSE_DIST_D
 
     def draw(self):
+        
         SCREEN.blit(BALL, self.pos())
 
     def checkBallMovingTowardsHoop(self, hoop: Hoop):
+        
         return not self.vx * (self.obj.centerx - WIDTH) + self.vy * (self.obj.centery - hoop.obj.centery) > 0
 
     def bounceRelative(self, x, y, hoop: Hoop):
+        
         # Check if the ball is moving towards the hoop
         if not self.checkBallMovingTowardsHoop(hoop):
+            
             return
         speedNow = (self.vx**2 + self.vy**2)**0.5
         bounceAngle = math.atan2(self.obj.centery - y, self.obj.centerx - x)
@@ -180,11 +204,14 @@ class Ball:
         self.vy = -speedNow * math.sin(bounceAngle) * 0.9
 
     def checkCollision(self, hoop: Hoop):
+        
         hib = hoop.hoopInBox()
         hmb = hoop.hoopMetalBox()
         if self.obj.colliderect(hib):
+            
             self.vx = 0
         elif self.obj.colliderect(hmb):
+            
             self.bounceRelative(hmb.centerx, hmb.centery, hoop)
 
 
@@ -194,6 +221,7 @@ class Ball:
 class Slider:
 
     def __init__(self, name, startingValue, xmin, xmax, ymin, ymax):
+        
         self.value = startingValue
         self.name = name
         self.xbound = (xmin, xmax)
@@ -204,9 +232,11 @@ class Slider:
     def update(self):
         mouseX, mouseY = pygame.mouse.get_pos()
         if self.xbound[0] < mouseX < self.xbound[1] and self.ybound[0] + self.height / 2 - 5 < mouseY < self.ybound[1]:
+            
             self.value = mouseX
 
     def draw(self, suffix="", getValFunc=None):
+        
         # Çerçeve
         pygame.draw.rect(SCREEN, (125, 125, 125),
                         (self.xbound[0], self.ybound[0], self.width, self.height))
@@ -241,6 +271,7 @@ class Slider:
 
 class Game:
     def __init__(self, Debug=False):
+        
         self.isRunning = True
         self.clock = pygame.time.Clock()
         self.deltaTime = 0
@@ -252,22 +283,30 @@ class Game:
         self.LastClickPos = None
 
     def tickClock(self):
+        
         return self.clock.tick(FPS)
 
     def handleEvents(self):
+        
         for event in pygame.event.get():
+            
             if event.type == pygame.QUIT:
+                
                 self.isRunning = False
                 break
             if event.type == pygame.MOUSEBUTTONDOWN:
+                
                 if not isMouseOverUI():
+                    
                     self.LastTrajectory = mouseDownShootBall(self.ball)
                     self.LastClickPos = pygame.mouse.get_pos()
 
     def playSpeedConversion(self, x):
+        
         return (x-15)/10
 
     def hoopHeightConversion(self, x):
+        
         minHoop = self.hoopSlider.xbound[0]
         maxHoop = self.hoopSlider.xbound[1]
         return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
@@ -276,11 +315,13 @@ class Game:
         return round(convertPixelToMeter(HEIGHT - self.hoopHeightConversion(x)), 2)
 
     def speedFormat(self, x):
+        
         return self.playSpeedConversion(x)
 
     def update(self):
         global PLAY_SPEED
         if pygame.mouse.get_pressed()[0]:
+            
             if isMouseOverUI():
                 self.speedSlider.update()
                 PLAY_SPEED = self.speedSlider.getValue(
@@ -332,13 +373,16 @@ class Game:
 
 
 def getHoopSliderValue(hoop: Hoop):
+    
     return round(convertPixelToMeter(HEIGHT - hoop.obj.y), 2)
 
 
 def draw_speed_vector(ball: Ball):
+    
     mouseX, mouseY = pygame.mouse.get_pos()
 
     if mouseX == ball.obj.centerx:
+        
         angle = pi/2
     else:
         angle = math.degrees(atan((ball.obj.centery - mouseY) /
@@ -370,8 +414,10 @@ def mouseDownShootBall(ball: Ball):
 
 
 def create_trajectory(posNow, v_x, v_y):
+    
     trajectory = []
     while WIDTH > posNow[0] > 0 and posNow[1] < HEIGHT:
+        
         xInc = v_x * (1/FPS) * PLAY_SPEED
         yInc = v_y * (1/FPS) * PLAY_SPEED
         xNow = posNow[0] + xInc
@@ -383,10 +429,13 @@ def create_trajectory(posNow, v_x, v_y):
 
 
 def draw_dashed_line_y(screen, color, start_pos, end_pos, width=1, dash_length=10):
+    
     for i in range(int(start_pos[1]), int(end_pos[1]), dash_length + 5):
+        
         pygame.draw.line(
             screen, color, (int(start_pos[0]), i), (int(end_pos[0]), i + dash_length), width)
 
+        
     midX = int((start_pos[0] + end_pos[0]) / 2)
     midY = int((start_pos[1] + end_pos[1]) / 2)
     mid_point = (midX, midY)
@@ -397,6 +446,7 @@ def draw_dashed_line_y(screen, color, start_pos, end_pos, width=1, dash_length=1
 def draw_dashed_line_x(screen, color, start_pos, end_pos, width=1, dash_length=10):
 
     for i in range(int(start_pos[0]), int(end_pos[0]), dash_length + 5):
+        
         pygame.draw.line(
             screen, color, (i, int(start_pos[1])), (i + dash_length, int(end_pos[1])), width)
 
@@ -408,6 +458,7 @@ def draw_dashed_line_x(screen, color, start_pos, end_pos, width=1, dash_length=1
 
 
 def draw_line_text(m, s):
+    
     df = pygame.font.get_default_font()
     font = pygame.font.SysFont(df, 20)
     text = font.render(s, True, (0, 0, 0))
@@ -415,10 +466,13 @@ def draw_line_text(m, s):
 
 
 def draw_trajectory(trajectory: None or list[tuple[int, int]]):
+    
     if trajectory is None:
         return
 
+    
     def x(t: tuple[int, int]):
+        
         t = _translatePos(t)
         return t[1]
     max_y_pos = max(trajectory, key=x)
@@ -433,6 +487,7 @@ def draw_trajectory(trajectory: None or list[tuple[int, int]]):
 
 
 def main():
+    
     game = Game(Debug=DEBUG_MODE)
 
     game.run()
