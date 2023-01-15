@@ -332,14 +332,14 @@ class Game:
     
     
 def handleEvents(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.isRunning = False
-                break
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if not isMouseOverUI():
-                    self.LastTrajectory = mouseDownShootBall(self.ball)
-                    self.LastClickPos = pygame.mouse.get_pos()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            self.isRunning = False
+            break
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if not isMouseOverUI():
+                self.LastTrajectory = mouseDownShootBall(self.ball)
+                self.LastClickPos = pygame.mouse.get_pos()
                     
                     
                     
