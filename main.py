@@ -345,14 +345,14 @@ def handleEvents(self):
                     
                     
 def playSpeedConversion(self, x):
-        return (x-15)/10   
+    return (x-15)/10   
     
     
     
 def hoopHeightConversion(self, x):
-        minHoop = self.hoopSlider.xbound[0]
-        maxHoop = self.hoopSlider.xbound[1]
-        return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
+    minHoop = self.hoopSlider.xbound[0]
+    maxHoop = self.hoopSlider.xbound[1]
+    return HEIGHT - 100 - ((x - minHoop) / (maxHoop - minHoop) * (HEIGHT - 100))
                     
                     
 def hoopFormat(self, x):
