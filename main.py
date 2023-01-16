@@ -485,7 +485,13 @@ def draw_trajectory(trajectory: None or list[tuple[int, int]]):
                 ", " +
                 str(round(convertPixelToMeter(_translatePos(max_y_pos)[1]), 3))+"m")
 
+def main():
+    
+    game = Game(Debug=DEBUG_MODE)
 
+    game.run()
+
+    pygame.quit()
 
 main()
 
